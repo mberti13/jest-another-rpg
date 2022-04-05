@@ -24,3 +24,29 @@ test('creates a player object', ()=>{
     );
 });
 
+//test for player stats object
+test('gets player stats as an object', () =>{
+    const player = new Player('Dave');
+
+
+    expect(player.getStats()).toHaveProperty('potions');
+    expect(player.getStats()).toHaveProperty('health');
+    expect(player.getStats()).toHaveProperty('strength');
+    expect(player.getStats()).toHaveProperty('agility');
+});
+
+//test for players inventory array or returns false
+test('gets inventory from player or returns false', () =>{
+    const player = new Player('Dave');
+
+    //test to see if there is an inventory array
+    expect(player.getInventory()).toEqual(expect.any(Array));
+
+    //sets player inventory as an empty array if inventory is empty
+    player.inventory = [];
+
+    //returns false for empty array, as there is no inventory
+    expect(player.getInventory()).toEqual(false);
+})
+
+
